@@ -1,13 +1,12 @@
-import React, { useContext } from 'react'
-import styles from './Pizza.module.css'
-import { Pizza as PizzaType } from '../@types/types'
+import React from 'react'
+import { Pizza } from '../@types/types'
 import withAddToCart, { addToCartProps } from '../lib/withAddToCart'
 
 interface Props extends addToCartProps {
-  pizza: PizzaType
+  pizza: Pizza
 }
 
-const Pizza: React.FC<Props> = ({ pizza, AddToCart }) => {
+const SpecialOffer: React.FC<Props> = ({ pizza, AddToCart }) => {
   const handleAddToCart = () => {
     AddToCart({
       id: pizza.id,
@@ -16,15 +15,15 @@ const Pizza: React.FC<Props> = ({ pizza, AddToCart }) => {
     })
   }
   return (
-    <li className={styles.container}>
+    <div>
       <h2>{pizza.name}</h2>
       <p>{pizza.description}</p>
       <p>{pizza.price}</p>
       <button type="button" onClick={handleAddToCart}>
         Add to Cart
       </button>
-    </li>
+    </div>
   )
 }
 
-export default withAddToCart(Pizza)
+export default withAddToCart(SpecialOffer)
