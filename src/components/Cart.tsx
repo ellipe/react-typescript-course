@@ -29,7 +29,7 @@ class Cart extends Component<Props, State> {
             <div className={styles.cartContainer}>
               <button className={styles.button} type="button" onClick={this.handleClick}>
                 <FiShoppingCart />
-                {state.cart.items.length} pizzas
+                {state.cart.items.reduce((total, item) => item.quantity + total, 0)} pizzas
               </button>
               <div
                 className={styles.cartDropDown}
@@ -39,7 +39,7 @@ class Cart extends Component<Props, State> {
                 <ul>
                   {state.cart.items.map(item => (
                     <li key={item.id}>
-                      {item.name} - {item.quantity}
+                      {item.name} x {item.quantity}
                     </li>
                   ))}
                 </ul>
